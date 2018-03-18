@@ -6,6 +6,8 @@
 	 *
 	 *		https://gist.github.com/1809044
 	 */
+	$path = '/var/www/der.uz/deploy_test_folder';
+	mkdir($path);
 
 	// The commands
 	$commands = array(
