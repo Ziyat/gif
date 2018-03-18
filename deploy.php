@@ -8,6 +8,7 @@
 	 */
 	$path = '/var/www/der.uz/deploy_test_folder';
 	mkdir($path);
+	echo "ураааа";
 
 	// The commands
 	$commands = array(
