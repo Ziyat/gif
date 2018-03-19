@@ -60,11 +60,11 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'desc' => 'Desc',
-            'category_id' => 'Category ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'title' => 'Наименование',
+            'desc' => 'Описание',
+            'category_id' => 'Категория',
+            'created_at' => 'Дата добавления',
+            'updated_at' => 'Дата обновления',
         ];
     }
 
@@ -74,5 +74,13 @@ class Product extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAttrProducts()
+    {
+        return $this->hasMany(AttrProduct::className(), ['product_id' => 'id']);
     }
 }

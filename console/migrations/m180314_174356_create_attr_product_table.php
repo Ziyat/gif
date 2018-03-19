@@ -21,7 +21,7 @@ class m180314_174356_create_attr_product_table extends Migration
         ],$tableOptions);
 
         $this->createIndex('{{%idx-attr_product-product_id}}', '{{%attr_product}}', 'product_id');
-        $this->addForeignKey('{{%fk-attr_product-product_id}}', '{{%attr_product}}', 'product_id', '{{%category}}', 'id', 'CASCADE', 'CASCADE');
+        $this->addForeignKey('{{%fk-attr_product-product_id}}', '{{%attr_product}}', 'product_id', '{{%product}}', 'id', 'CASCADE', 'CASCADE');
 
     }
 

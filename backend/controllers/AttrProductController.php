@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\entities\AttrProduct;
 use common\entities\AttrProductSearch;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -65,14 +66,12 @@ class AttrProductController extends Controller
     public function actionCreate()
     {
         $model = new AttrProduct();
-
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['product/update', 'id' => $model->product_id]);
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        return false;
     }
 
     /**
@@ -104,9 +103,7 @@ class AttrProductController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        return $this->findModel($id)->delete();
     }
 
     /**

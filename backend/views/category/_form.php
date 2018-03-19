@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-            <div class="panel-body">
+
                 <?php $form = ActiveForm::begin(); ?>
 
                 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
@@ -29,5 +29,5 @@ use yii\widgets\ActiveForm;
                 </div>
 
                 <?php ActiveForm::end(); ?>
-            </div>
+
 

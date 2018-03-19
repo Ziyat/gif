@@ -126,14 +126,6 @@ class Category extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAttrProducts()
-    {
-        return $this->hasMany(AttrProduct::className(), ['product_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getProducts()
     {
         return $this->hasMany(Product::className(), ['category_id' => 'id']);

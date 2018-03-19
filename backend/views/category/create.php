@@ -11,16 +11,17 @@ $this->title = 'Добавить категорию';
 $this->params['breadcrumbs'][] = ['label' => 'Категорий', 'url' => ['index','type' => $type]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-
-<div class="col-lg-6">
-    <div class="panel panel-primary">
-        <div class="panel-heading"><?= $model->getTypeName($type) ?></div>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-        'type' => $type
-    ]) ?>
-
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><?= $model->getTypeName($type) ?></div>
+            <div class="panel-body">
+                <?= $this->render('_form', [
+                    'model' => $model,
+                    'type' => $type
+                ]) ?>
+            </div>
+        </div>
     </div>
 </div>
+
