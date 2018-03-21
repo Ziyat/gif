@@ -19,9 +19,16 @@ class CategorySearch extends Category
     public function rules()
     {
         return [
-            [['id', 'type', 'parent_id','created_at', 'updated_at'], 'integer'],
+            [['id', 'type', 'parent_id'], 'integer'],
+            [['created_at'], 'date', 'format' => 'php:d-m-Y'],
+            [['created_at'], 'datepicker'],
             [['title', 'desc','parent_id'], 'safe'],
         ];
+    }
+
+    public function datepicker($attribute, $params)
+    {
+        return $this->$attribute = strtotime($this->$attribute);
     }
 
     /**
@@ -58,13 +65,11 @@ class CategorySearch extends Category
             // $query->where('0=1');
             return $dataProvider;
         }
-
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'parent_id' => $this->parent_id,
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

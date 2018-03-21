@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model backend\entities\Page */
+/* @var $model common\entities\Page */
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Pages', 'url' => ['index']];
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                     'attribute' => 'status',
                     'value' => function($model){
-                        return $model->status == \backend\entities\Page::PUBLISHED ? 'Опубликованный' : 'Не опубликованный';
+                        return $model->status == \common\entities\Page::PUBLISHED ? 'Опубликованный' : 'Не опубликованный';
                     }
             ],
             [

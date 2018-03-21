@@ -2,13 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\entities\Page;
+use common\entities\Page;
 use yii\helpers\Url;
 use vova07\imperavi\Widget;
 use zxbodya\yii2\galleryManager\GalleryManager;
 
 /* @var $this yii\web\View */
-/* @var $model backend\entities\Page */
+/* @var $model common\entities\Page */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -45,7 +45,7 @@ use zxbodya\yii2\galleryManager\GalleryManager;
                     <span class="input-group-addon" id="basic-addon3">'.Yii::$app->params['frontendHostInfo'].'/</span>{input}</div>{hint}{error}']
                     )->textInput(['maxlength' => true]) ?>
                     <div class="form-group">
-                        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-block btn-success']) ?>
+                        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-flat btn-block btn-success']) ?>
                     </div>
                 </div>
             </div>

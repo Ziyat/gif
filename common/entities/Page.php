@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\entities;
+namespace common\entities;
 
 use Yii;
 use yii\db\ActiveRecord;
@@ -108,19 +108,17 @@ class Page extends \yii\db\ActiveRecord
         $result = [
             [
                 'label' => 'Главная',
-                'url' =>['/site/index']
+                'url' =>['/site/index'],
+                'action' => 'index'
             ]
         ];
         $i=1;
         foreach($pages as $page){
             $result[$i]['label'] = $page['title'];
             $result[$i]['url'] = ['/site/page', 'alias' =>$page['alias']];
+            $result[$i]['action'] = $page['alias'];
             $i++;
         }
-        $result[]=[
-            'label' => 'Контакты',
-            'url' =>['/site/contact']
-        ];
 
         return $result;
 

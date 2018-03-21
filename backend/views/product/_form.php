@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\entities\Category;
+use zxbodya\yii2\galleryManager\GalleryManager;
 
 $category = new Category();
 
@@ -24,7 +25,7 @@ $category = new Category();
                 <?= $form->field($model, 'category_id')->dropDownList($category->getCategories($category::PRODUCT)) ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Сохранить', ['class' => 'btn btn-block btn-success']) ?>
+                    <?= Html::submitButton('Сохранить', ['class' => 'btn btn-flat btn-block btn-success']) ?>
                 </div>
             </div>
         </div>
@@ -33,7 +34,6 @@ $category = new Category();
     <?php if ($model->isNewRecord): ?>
         <p>Can not upload images for new record</p>
     <?php else: ?>
-
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">Атрибуты</div>
@@ -56,7 +56,7 @@ $category = new Category();
                                             <td><?= $attrbute->id ?></td>
                                             <td><?= $attrbute->key ?></td>
                                             <td><?= $attrbute->value ?></td>
-                                            <td><?= Html::button('<i class="fa fa-remove"></i>', ['attribute_id' => $attrbute->id, 'class' => 'btn btn-link remvoeAttr']) ?></td>
+                                            <td><?= Html::button('<i class="text-danger fa fa-remove"></i>', ['attribute_id' => $attrbute->id, 'class' => 'btn btn-link remvoeAttr']) ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>
@@ -78,12 +78,21 @@ $category = new Category();
                             </div>
                         </div>
                         <div class="col-lg-2">
-                            <?= Html::button('<i class="fa fa-plus"></i>', ['id' => 'addAttr', 'class' => 'btn btn-link']) ?>
+                            <?= Html::button('<i class="fa fa-plus"></i>', ['id' => 'addAttr', 'class' => 'btn btn-flat btn-primary','title' => 'Добавить атрибут']) ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-lg-12">
+            <?= GalleryManager::widget([
+                'model' => $model,
+                'behaviorName' => 'galleryBehavior',
+                'apiRoute' => 'product/galleryApi'
+            ]);
+            ?>
+        </div>
+
     <?php endif; ?>
 
 </div>
@@ -103,12 +112,11 @@ if (!$model->isNewRecord) {
               data: { '_csrf-backend': csrfToken, AttrProduct:{key: key.val(), value: value.val(), product_id: id}  }
             })
             .done(function( res ) {
-                var html = "<tr><td>"
-                            +res.id+"</td><td>"
-                            +res.key+"</td><td>"
-                            +res.value+"</td>"
-                            +"</tr>";
-                $('tbody').append(html);
+                if(res === false){
+                    var html = "Вы не заполнили поля";
+                    $('tbody').append(html);
+                }
+                
             });
     });
     

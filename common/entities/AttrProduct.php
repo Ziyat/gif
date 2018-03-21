@@ -33,7 +33,7 @@ class AttrProduct extends \yii\db\ActiveRecord
             [['key', 'product_id'], 'required'],
             [['product_id'], 'integer'],
             [['key', 'value'], 'string', 'max' => 255],
-            [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['product_id' => 'id']],
+            [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::className(), 'targetAttribute' => ['product_id' => 'id']],
         ];
     }
 

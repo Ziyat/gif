@@ -1,14 +1,14 @@
 <?php
 
-namespace backend\entities;
+namespace common\entities;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\entities\Page;
+use common\entities\Page;
 
 /**
- * PageSearch represents the model behind the search form of `app\entities\Page`.
+ * PageSearch represents the model behind the search form of `common\entities\Page`.
  */
 class PageSearch extends Page
 {

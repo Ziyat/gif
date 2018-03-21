@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model backend\entities\Page */
+/* @var $model common\entities\Page */
 
 $this->title = 'Редактировать: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Страницы', 'url' => ['index']];

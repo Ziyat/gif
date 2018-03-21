@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
                 <?= $form->field($model, 'type')->hiddenInput(['value' => $type])->label('') ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Сохранить', ['class' => 'btn btn-block btn-success']) ?>
+                    <?= Html::submitButton('Сохранить', ['class' => 'btn btn-flat btn-block btn-success']) ?>
                 </div>
 
                 <?php ActiveForm::end(); ?>

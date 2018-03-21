@@ -2,22 +2,20 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\entities\Category;
 
 /* @var $this yii\web\View */
 /* @var $model common\entities\Article */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Articles', 'url' => ['index']];
+$this->title = \yii\helpers\StringHelper::truncate($model->title,40);
+$this->params['breadcrumbs'][] = ['label' => 'Статьи', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
+        <?= Html::a('Редактирование', ['update', 'id' => $model->id], ['class' => 'btn btn-flat btn-primary']) ?>
+        <?= Html::a('Удаление', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-flat btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
@@ -31,8 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'title',
             'desc',
-            'text:ntext',
-            'category_id',
+            'text:html',
+            [
+                'attribute' => 'category_id',
+                'value' => function ($model) {
+                    return $model->category_id
+                        ? ((new Category())->getCategories(Category::ARTICLE))[$model->category_id]
+                        : 'Категория не задано';
+                }
+            ],
         ],
     ]) ?>
 

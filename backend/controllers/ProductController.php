@@ -8,6 +8,8 @@ use common\entities\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use zxbodya\yii2\galleryManager\GalleryManager;
+use zxbodya\yii2\galleryManager\GalleryManagerAction;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -25,6 +27,18 @@ class ProductController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+            ],
+        ];
+    }
+    public function actions()
+    {
+        return [
+            'galleryApi' => [
+                'class' => GalleryManagerAction::className(),
+                // mappings between type names and model classes (should be the same as in behaviour)
+                'types' => [
+                    'product' => Product::className()
+                ]
             ],
         ];
     }

@@ -29,6 +29,17 @@ class ArticleController extends Controller
         ];
     }
 
+    public function actions()
+    {
+        return [
+            'image-upload' => [
+                'class' => 'vova07\imperavi\actions\UploadFileAction',
+                'url' => Yii::$app->params['frontendHostInfo'].\Yii::$app->params['imagesUrl'], // Directory URL address, where files are stored.
+                'path' => \Yii::$app->params['imagesPath'],
+            ]
+        ];
+    }
+
     /**
      * Lists all Article models.
      * @return mixed

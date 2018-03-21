@@ -52,12 +52,19 @@ return [
             'rules' => [
                 '' => 'site/index',
                 'captcha' => 'site/captcha',
-                '<action:(about|contact|login|signup)>' => 'site/<action>',
+                '<action:(about|contact)>' => 'site/<action>',
+                'article' => 'article/index',
+                'article/<id:[\d+]+>' => 'article/view',
+                'article/category/<id:[\d+]+>' => 'article/category',
+                'product' => 'product/index',
+                'product/<id:[\d+]+>' => 'product/view',
+                'product/category/<id:[\d+]+>' => 'product/category',
+
                 '<alias:[\w-]+>' => 'site/page',
                 '<_c:[\w\-]+>' => '<_c>/index',
+                '<_c:[\w\-]+>/<_a:[\w-]+>' => '<_c>/<_a>',
                 '<_c:[\w\-]+>/<id:[\d+]+>/<seria:[\d+]+>' => '<_c>/view',
                 '<_c:[\w\-]+>/<id:[\d+]+>' => '<_c>/view',
-                '<_c:[\w\-]+>/<_a:[\w-]+>' => '<_c>/<_a>',
             ],
         ],
 

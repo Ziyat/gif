@@ -3,9 +3,9 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=giforms',
+            'dsn' => 'mysql:host=localhost;dbname=giforms_dev',
             'username' => 'root',
-            'password' => '',
+            'password' => 'QWErty123$%^',
             'charset' => 'utf8',
         ],
         'mailer' => [

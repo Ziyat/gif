@@ -10,45 +10,55 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
 $this->title = 'Контакты';
-//$this->params['breadcrumbs'][] = $this->title;
+$this->params['active'] = 'contact';
 ?>
-<div class="site-contact">
 
-    <div class="row">
-        <div class="col-lg-6">
-            <h3><?= Html::encode($this->title) ?></h3>
-            <p>
-                Телефон:<br>
-                <a href="tel:89663086371">8 966 308 63 71</a> (RU)<br>
-                <a href="tel:87772388339">8 777 238 83 39</a> (KZ)<br>
-                Email:<br>
-                <a href="mailto:sergey.pavlenko-ms@mail.ru">sergey.pavlenko-ms@mail.ru</a>
 
-            </p>
-        </div>
-        <div class="col-lg-6">
-            <h3>Оставить заявку на консультацию</h3>
-            <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <div class="content">
+            <div class="group btmspace-50 demo">
+                <div class="one_quarter first">
+                    <h3><?= Html::encode($this->title) ?></h3>
+                    <p>
+                        Телефон:<br>
+                        <a href="tel:89663086371">8 966 308 63 71</a><br>
+                        <a href="tel:87772388339">8 777 238 83 39</a><br>
+                        Email:<br>
+                        <a href="mailto:example@mail.ru">example@mail.ru</a>
 
-            <?= $form->field($model, 'name')->label('Ф.И.О.')->textInput(['autofocus' => true]) ?>
+                    </p>
+                </div>
+                <div class="three_quarter">
+                    <div id="comments">
+                        <h3>Свяжитесь с нами</h3>
+                        <?php $form = ActiveForm::begin(); ?>
+                        <div class="one_third first">
+                            <?= $form->field($model, 'name')->label('Ф.И.О.')->textInput(['autofocus' => true]) ?>
+                        </div>
+                        <div class="one_third">
+                            <?= $form->field($model, 'email')->label('Эл.Почта') ?>
+                        </div>
+                        <div class="one_third">
+                            <?= $form->field($model, 'phone')->label('Телефон') ?>
+                        </div>
+                        <div class="block clear">
+                            <?= $form->field($model, 'body')->label('Опишите проблему   ')->textarea(['rows' => 6]) ?>
+                        </div>
 
-            <?= $form->field($model, 'email')->label('Эл.Почта') ?>
-            <?= $form->field($model, 'phone')->label('Телефон') ?>
+                        <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                            'template' => '<div class="one_third">{image}</div><div class="block clear">{input}</div>',
+                        ])->label('Введите код безопастности') ?>
 
-            <?= $form->field($model, 'date')->label('Выберите дату и время') ?>
+                        <div>
+                            <?= Html::submitInput('Отправить', ['name' => 'contact-button']) ?>
+                        </div>
 
-            <?= $form->field($model, 'body')->label('Опишите проблему   ')->textarea(['rows' => 6]) ?>
-
-            <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-            ])->label('Введите код безопастности') ?>
-
-            <div class="form-group">
-                <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                        <?php ActiveForm::end(); ?>
+                    </div>
+                </div>
             </div>
-
-            <?php ActiveForm::end(); ?>
         </div>
-    </div>
-
+    </main>
 </div>
+

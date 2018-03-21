@@ -18,7 +18,11 @@ class m180314_180132_create_article_table extends Migration
             'title' => $this->string()->notNull(),
             'desc' => $this->string()->null(),
             'text' => 'MEDIUMTEXT',
+            'status' => $this->boolean()->defaultValue(1),
             'category_id' => $this->integer()->null(),
+            'published_at' => $this->integer()->null(),
+            'created_at' => $this->integer()->null(),
+            'updated_at' => $this->integer()->null(),
         ],$tableOptions);
 
         $this->createIndex('{{%idx-article-category_id}}', '{{%article}}', 'category_id');
