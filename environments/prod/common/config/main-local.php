@@ -4,8 +4,8 @@ return [
         'db' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=giforms',
-            'username' => '',
-            'password' => '',
+            'username' => 'root',
+            'password' => 'QWErty123$%^',
             'charset' => 'utf8',
         ],
         'mailer' => [
